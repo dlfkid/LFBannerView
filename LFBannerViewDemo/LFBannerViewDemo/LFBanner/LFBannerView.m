@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSTimer *scrollTimer;
 @property (nonatomic, strong) NSArray <UIImageView *> *banners;
 @property (nonatomic, strong) UIPageControl *pageControl;
+@property (nonatomic, strong) UIButton *tappedButton;
 
 @end
 
@@ -36,6 +37,9 @@
         _pageControl.numberOfPages = self.bannerImages.count;
         [self addSubview:self.pageControl];
         
+        _tappedButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [self addSubview:self.tappedButton];
+        [self.tappedButton addTarget:self action:@selector(tappedButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return self;
 }
@@ -49,9 +53,7 @@
         }];
     }
     self.pageControl.center = CGPointMake(self.frame.size.width / 2, self.frame.size.height - 10);
-    if (self.loop) {
-        [self.scrollView setContentOffset:CGPointMake(self.frame.size.width, 0) animated:NO];
-    }
+    self.tappedButton.frame = self.frame;
     [super layoutSubviews];
 }
 
@@ -150,8 +152,19 @@
     }
 }
 
-//- (void)bannerImageTappedHandler:(UIImage *)image {
-//    !self.bannerTappedHandler ?: self.bannerTappedHandler([self.bannerImages indexOfObject:image], image);
-//}
+- (void)setCurrentPage:(NSInteger)page WithAnimagtion:(BOOL)animation {
+    if (page < self.pageControl.numberOfPages) {
+        self.pageControl.currentPage = page;
+        if (self.loop) {
+            [self.scrollView setContentOffset:CGPointMake(self.frame.size.width * (page + 1), 0) animated:animation];
+        } else {
+            [self.scrollView setContentOffset:CGPointMake(self.frame.size.width * page, 0) animated:animation];
+        }
+    }
+}
+
+- (void)tappedButtonAction:(UIButton *)sender {
+    !self.bannerTappedHandler ?: self.bannerTappedHandler(self.pageControl.currentPage, self.bannerImages[self.pageControl.currentPage]);
+}
 
 @end

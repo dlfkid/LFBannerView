@@ -48,6 +48,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 -(instancetype)initWithFrame:(CGRect)frame Loop:(BOOL)loop;
 
+/// 设置当前页
+/// @param page 页码
+/// @param animation 是否需要动画
+- (void)setCurrentPage:(NSInteger)page WithAnimagtion:(BOOL)animation;
+
 @end
 
 NS_ASSUME_NONNULL_END
