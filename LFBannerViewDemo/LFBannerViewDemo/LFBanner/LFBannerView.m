@@ -15,7 +15,6 @@
 @property (nonatomic, strong) NSTimer *scrollTimer;
 @property (nonatomic, strong) NSArray <UIImageView *> *banners;
 @property (nonatomic, strong) UIPageControl *pageControl;
-@property (nonatomic, strong) UIButton *tappedButton;
 
 @end
 
@@ -37,9 +36,8 @@
         _pageControl.numberOfPages = self.bannerImages.count;
         [self addSubview:self.pageControl];
         
-        _tappedButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [self addSubview:self.tappedButton];
-        [self.tappedButton addTarget:self action:@selector(tappedButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedButtonAction:)];
+        [self addGestureRecognizer:tapGesture];
     }
     return self;
 }
@@ -53,7 +51,6 @@
         }];
     }
     self.pageControl.center = CGPointMake(self.frame.size.width / 2, self.frame.size.height - 10);
-    self.tappedButton.frame = self.frame;
     [super layoutSubviews];
 }
 
@@ -81,8 +78,6 @@
         UIImageView *bannerView = [[UIImageView alloc] initWithImage:banner];
         bannerView.contentMode = UIViewContentModeScaleToFill;
         bannerView.userInteractionEnabled = YES;
-//        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(bannerImageTappedHandler:)];
-//        [bannerView addGestureRecognizer:tapGesture];
         [tempbanners addObject:bannerView];
         [self.scrollView addSubview:bannerView];
     }];
@@ -163,8 +158,8 @@
     }
 }
 
-- (void)tappedButtonAction:(UIButton *)sender {
-    !self.bannerTappedHandler ?: self.bannerTappedHandler(self.pageControl.currentPage, self.bannerImages[self.pageControl.currentPage]);
+- (void)tappedButtonAction:(UITapGestureRecognizer *)sender {
+    !self.bannerTappedHandler ?: self.bannerTappedHandler(self.pageControl.currentPage);
 }
 
 @end

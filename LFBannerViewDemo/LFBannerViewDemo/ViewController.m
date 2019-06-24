@@ -27,6 +27,11 @@
     UIImage *testImage2 = [UIImage imageNamed:@"BannerTest2"];
     UIImage *testImage3 = [UIImage imageNamed:@"BannerTest3"];
     bannerView.bannerImages = @[testImage0, testImage1, testImage2, testImage3];
+    bannerView.scrollTimeInterval = 3;
+    bannerView.bannerTappedHandler = ^(NSInteger index) {
+        NSLog(@"Banner Index : %ld", (long)index);
+    };
+    bannerView.userInteractionEnabled = YES;
 }
 
 

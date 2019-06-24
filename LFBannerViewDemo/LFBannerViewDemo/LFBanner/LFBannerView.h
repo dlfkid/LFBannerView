@@ -31,7 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  图片点击事件回调，参数是图片下标和图片对象
  */
-@property (nonatomic, copy) void(^bannerTappedHandler)(NSInteger index, UIImage *bannerImage);
+@property (nonatomic, copy) void(^bannerTappedHandler)(NSInteger index);
 
 /**
  图片滚动方向，默认从右向左滚动
