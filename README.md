@@ -2,7 +2,7 @@
 
 Flexable scrollable banners for iOS.
 
-##Features
+## Features
 
 1. Infinity scroll, you can set the bannerView to loop when initializing it, the bannerView automatically return to first image when it scrolls to one end.
 
@@ -12,10 +12,10 @@ Flexable scrollable banners for iOS.
 
 4. Block based tap gesture call back, when the bannerView was tapped, it will call on a block with the index of the current page as parameter, let you customize the behavior of your app.
 
-##Usage
+## Usage
 
-1. import LFBannerView.h
-2. in your view controller or view
+1. Import LFBannerView.h
+2. In your view controller or view
 ```objc
 	// initialize
     LFBannerView *bannerView = [[LFBannerView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 200) Loop:YES];
@@ -35,7 +35,7 @@ Flexable scrollable banners for iOS.
     };
 ```
 
-##License
+## License
 **LFBannerView** is released under the MIT License. See LICENSE for details.
 
 
