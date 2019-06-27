@@ -31,7 +31,6 @@
     bannerView.bannerTappedHandler = ^(NSInteger index) {
         NSLog(@"Banner Index : %ld", (long)index);
     };
-    bannerView.userInteractionEnabled = YES;
 }
 
 

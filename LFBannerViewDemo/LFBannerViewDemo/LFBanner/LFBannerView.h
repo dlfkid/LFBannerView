@@ -46,7 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param loop 是否能循环滚动
  @return 滚动栏对象
  */
--(instancetype)initWithFrame:(CGRect)frame Loop:(BOOL)loop;
+- (instancetype)initWithFrame:(CGRect)frame Loop:(BOOL)loop;
 
 /// 设置当前页
 /// @param page 页码
