@@ -13,7 +13,6 @@
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) NSTimer *scrollTimer;
-@property (nonatomic, strong) NSArray <UIImageView *> *banners;
 @property (nonatomic, strong) UIPageControl *pageControl;
 
 @end

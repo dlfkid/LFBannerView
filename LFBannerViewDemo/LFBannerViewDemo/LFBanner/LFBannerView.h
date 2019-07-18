@@ -38,6 +38,10 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, assign) BOOL scrollFromLeftToRight;
 
+/**
+ 图片ImageViews
+ */
+@property (nonatomic, strong) NSArray <UIImageView *> *banners;
 
 /**
  初始化方法
